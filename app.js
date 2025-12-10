@@ -10,7 +10,7 @@ app.use(express.json());
 app.use('/search', searchRouter);
 
 // health
-app.get('/', (req, res) => res.send('Dish search service is up.'));
+app.get('/', (req, res) => res.send('Restaurant search by Dish app is up.'));
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
