@@ -1,6 +1,7 @@
 // db.js
 const mysql = require('mysql2/promise');
 const dotenv = require('dotenv');
+const fs = require("fs");
 dotenv.config();
 
 const pool = mysql.createPool({
@@ -9,6 +10,9 @@ const pool = mysql.createPool({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
+  ssl: {
+    ca: fs.readFileSync(process.env.CA)
+  }
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0
